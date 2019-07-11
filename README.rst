@@ -31,7 +31,7 @@ This module can be used in two different ways:
 
     - Create a model that derives from **LogActionMixin** and add the resouce field
       to map the model you want to log, use *__name__* same as the model to log plus
-      *.log_action* appended to the end:
+      *'.log_action'* appended to the end:
       ::
           class YourLog(LogActionMixin):
               "Your Logs"
@@ -42,6 +42,12 @@ This module can be used in two different ways:
     - Use the **write_log** function wherever you want.
       If **write_log** finds *my.model.log_action* model then it writes messages using it,
       otherwise it writes messages using *log_action* model.
+
+    - **Views:**: You can define youw own views for the log model or use the views defined
+      on *log_action* module:
+      ::
+          <field name="logs" colspan="4"
+              view_ids="log_action.log_view_tree,log_action.log_view_form"/>
 
 
 License
