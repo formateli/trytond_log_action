@@ -13,7 +13,7 @@ This module can be used in two different ways:
 
     - Add the logs field to the model.
       ::
-          logs = fields.One2Many ('module.name', 'resource', 'Logs')
+          logs = fields.One2Many ('log_action', 'resource', 'Logs')
 
     - Use the **write_log** function wherever you want,
       passing as arguments the message and objects affected:
@@ -33,7 +33,6 @@ This module can be used in two different ways:
       to map the model you want to log, use *__name__* same as the model to log plus
       *.log_action* appended to the end:
       ::
-
           class YourLog(LogActionMixin):
               "Your Logs"
               __name__ = "my.model.log_action" 
