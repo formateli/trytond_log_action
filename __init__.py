@@ -3,7 +3,7 @@
 
 from trytond.pool import Pool
 from . import log_action
-from .log_action import write_log
+from .log_action import LogActionMixin, write_log
 
 
 def register():
