@@ -8,17 +8,17 @@ This module can be used in two different ways:
 1.- Creating global logs:
 
     - Import **write_log** function:
-      *from trytond.modules.log_action import write_log*
+      ::
+          from trytond.modules.log_action import write_log
 
     - Add the logs field to the model.
       ::
-
-          *logs = fields.One2Many ('module.name', 'resource', 'Logs')*
+          logs = fields.One2Many ('module.name', 'resource', 'Logs')
 
     - Use the **write_log** function wherever you want,
       passing as arguments the message and objects affected:
       ::
-          *write_log ('Some insteresting log', sales)*
+          write_log ('Some insteresting log', sales)
 
     - **write_log** writes the message using *write_log* module.
 
@@ -26,7 +26,8 @@ This module can be used in two different ways:
 2.- Using your own log model:
 
     - Import **LogActionMixin** class and **write_log** function:
-      *from trytond.modules.log_action import LogActionMixin, write_log*
+      ::
+          from trytond.modules.log_action import LogActionMixin, write_log
 
     - Create a model that derives from **LogActionMixin** and add the resouce field
       to map the model you want to log, use *__name__* same as the model to log plus
