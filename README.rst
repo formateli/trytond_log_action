@@ -39,11 +39,15 @@ This module can be used in two different ways:
               resource = fields.Many2One('my.model',
                   'My Model', required=True, select=True)
 
+    - Add the logs field to the model using your log model.
+      ::
+          logs = fields.One2Many ('my.model.log_action', 'resource', 'Logs')
+
     - Use the **write_log** function wherever you want.
       If **write_log** finds *my.model.log_action* model then it writes messages using it,
       otherwise it writes messages using *log_action* model.
 
-    - **Views:**: You can define youw own views for the log model or use the views defined
+    - **Views:**: You can define your own views for the log model or use the views defined
       on *log_action* module:
       ::
           <field name="logs" colspan="4"
