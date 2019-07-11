@@ -30,16 +30,14 @@ class LogAction(ResourceMixin):
 
     @classmethod
     def log(cls, action, objs):
-        User = Pool().get('res.user')
-        user = User(Transaction().user)
+        user = Transaction().user
         with Transaction().set_user(0):
             for obj in objs:
-                log = cls(
-                    resource=obj.__class__.__name__ + ',' + str(obj.id),
-                    action=action,
-                    user=user
-                )
-                log.save()
+                cls.create([{
+                    'resource': obj.__class__.__name__ + ',' + str(obj.id),
+                    'action': action,
+                    'user': user
+                }])
 
 
 def write_log(action, objs):
