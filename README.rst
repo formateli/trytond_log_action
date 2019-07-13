@@ -37,7 +37,7 @@ This module can be used in two different ways:
               "Your Logs"
               __name__ = "my.model.log_action" 
               resource = fields.Many2One('my.model',
-                  'My Model', required=True, select=True)
+                  'My Model', ondelete='CASCADE', select=True)
 
     - Add the logs field to the model using your log model.
       ::
