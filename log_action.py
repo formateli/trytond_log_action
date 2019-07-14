@@ -119,6 +119,8 @@ class LogAction(LogActionMixin):
 
 
 def write_log(action, objs):
+    if not objs:
+        return
     pool = Pool()
     model = objs[0].__class__.__name__
     try:
