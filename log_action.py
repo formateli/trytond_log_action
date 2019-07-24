@@ -20,7 +20,10 @@ class LogActionMixin(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(LogActionMixin, cls).__setup__()
-        cls._order.insert(0, ('date', 'DESC'))
+        cls._order = [
+                ('date', 'DESC'),
+                ('id', 'DESC')
+            ]
 
     @staticmethod
     def default_date():
