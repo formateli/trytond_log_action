@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <form col="6">
     <label name="date"/>
     <field name="date" widget="date"/>
-    <label string="Time"/>
+    <label name="date" string="Time"/>
     <field name="date" widget="time"/>
     <label name="user"/>
     <field name="user"/>
