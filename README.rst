@@ -33,14 +33,14 @@ How to use:
     If **write_log** finds *my.model.log_action* model then it writes messages using it,
     otherwise an error is raised.
 
-    **write_log** has three parameters:
+    **write_log** has following parameters:
+
         - **action**: The message to log. It can be a model message id for gettext translation.
         - **obj**: Objects from which logs are written. Must be of same type.
         - ***args**: Optional key for searching porpuses.
         - ****variables**: Optional variables used by gettext for translation.
 
-5.- **Views:**: You can define your own views for the log model or use the views defined
-    on *log_action* module:
+5.- **Views:**: You can define your own views for the log model or use the views defined on *log_action* module:
 
 ::
 
