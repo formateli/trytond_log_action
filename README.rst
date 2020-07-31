@@ -12,8 +12,8 @@ How to use:
     from trytond.modules.log_action import LogActionMixin, write_log
 
 2.- Create a model that derives from **LogActionMixin** and add the resouce field (Many2One)
-    to map the model you want to log, use *__name__* same as the model you want to log plus
-    *'.log_action'* appended to the end:
+to map the model you want to log, use *__name__* same as the model you want to log plus
+*'.log_action'* appended to the end:
 
 ::
 
