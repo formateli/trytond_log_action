@@ -7,14 +7,15 @@ How to use:
 
 1.- Import **LogActionMixin** class and **write_log** function:
 
-    ::
+::
+
     from trytond.modules.log_action import LogActionMixin, write_log
 
 2.- Create a model that derives from **LogActionMixin** and add the resouce field (Many2One)
     to map the model you want to log, use *__name__* same as the model you want to log plus
     *'.log_action'* appended to the end:
 
-    ::
+::
         class MyLog(LogActionMixin):
             "My Logs Model"
             __name__ = "my.model.log_action" 
@@ -23,7 +24,8 @@ How to use:
 
 3.- Add the logs field (One2Many) to the model you want to log.
 
-    ::
+::
+
     logs = fields.One2Many ('my.model.log_action', 'resource', 'Logs')
 
 4.- Use the **write_log** function wherever you want.
