@@ -1,0 +1,72 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "view:log_action:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "view:log_action:"
+msgid "Time"
+msgstr "Hora"
+
+msgctxt "view:log_action:"
+msgid "User"
+msgstr "Usuario"
+
+msgctxt "view:log_action:"
+msgid "Message"
+msgstr "Mensaje"
+
+msgctxt "model:ir.message,text:model_not_found"
+msgid "Model \"%(model)s\" not found for logging."
+msgstr "El Modelo \"%(model)s\" no fue encontrado para escribir logs."
+
+msgctxt "model:ir.message,text:log_action_error"
+msgid "Logging error: \"%(error)s\"."
+msgstr "Error al escribir log: \"%(error)s\"."
+
+msgctxt "model:ir.message,text:objet_not_same_type"
+msgid "Logging objects error: \"%(model_1)s\" and \"%(model_2)s\" are diferent."
+msgstr ""
+"Error al escribir logs en objetos: \"%(model_1)s\" y \"%(model_2)s\" son diferentes."
+
+msgctxt "model:ir.message,text:msg_draft"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "model:ir.message,text:msg_created"
+msgid "Created"
+msgstr "Creado"
+
+msgctxt "model:ir.message,text:msg_modified"
+msgid "Modified"
+msgstr "Modificado"
+
+msgctxt "model:ir.message,text:msg_confirmed"
+msgid "Confirmed"
+msgstr "Confirmado"
+
+msgctxt "model:ir.message,text:msg_approved"
+msgid "Approved"
+msgstr "Aprobado"
+
+msgctxt "model:ir.message,text:msg_cancelled"
+msgid "Cancelled"
+msgstr "Cancelado"
+
+msgctxt "model:ir.message,text:msg_posted"
+msgid "Posted"
+msgstr "Posteado"
+
+msgctxt "model:ir.message,text:msg_validated"
+msgid "Validated"
+msgstr "Validado"
+
+msgctxt "model:ir.message,text:msg_paid"
+msgid "Paid"
+msgstr "Pagado"
+
+msgctxt "model:ir.message,text:msg_assigned"
+msgid "Assigned"
+msgstr "Asignado"
