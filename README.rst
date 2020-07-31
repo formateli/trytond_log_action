@@ -1,17 +1,19 @@
 Log Action
 ##########
 
-Write logs on models.
+Write logs on Tryton models.
 
 How to use:
 
 1.- Import **LogActionMixin** class and **write_log** function:
+
     ::
         from trytond.modules.log_action import LogActionMixin, write_log
 
 2.- Create a model that derives from **LogActionMixin** and add the resouce field (Many2One)
     to map the model you want to log, use *__name__* same as the model you want to log plus
     *'.log_action'* appended to the end:
+
     ::
         class MyLog(LogActionMixin):
             "My Logs Model"
@@ -20,6 +22,7 @@ How to use:
                 'My Model', ondelete='CASCADE', select=True)
 
 3.- Add the logs field (One2Many) to the model you want to log.
+
     ::
         logs = fields.One2Many ('my.model.log_action', 'resource', 'Logs')
 
@@ -28,12 +31,14 @@ How to use:
     otherwise an error is raised.
 
     **write_log** has three parameters:
-        - **action**: The message to log. It should be translated if necesary.
+        - **action**: The message to log. It can be a key for gettext translation.
         - **obj**: Objects from which logs are written.
-        - **key** (optional): key for searching porpuses.
+        - ***args**: key for searching porpuses.
+        - ****variables**: Variables used by gettext for translation.
 
 5.- **Views:**: You can define your own views for the log model or use the views defined
     on *log_action* module:
+
     ::
         <field name="logs" colspan="4"
             view_ids="log_action.log_view_tree,log_action.log_view_form"/>
