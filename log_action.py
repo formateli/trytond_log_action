@@ -42,6 +42,8 @@ class LogActionMixin(ModelSQL, ModelView):
     @staticmethod
     def _get_variables(data):
         result = {}
+        if not data:
+            return result
         pairs = data.split(':||:')
         for pair in pairs:
             vals = pair.split(':|:')
@@ -60,8 +62,8 @@ class LogActionMixin(ModelSQL, ModelView):
             result = None
         return result
 
-    def get_message(self):
-        variables = self._get_variables(self.lang_variables)
+    def get_message(self, name=None):
+        variables = self._get_variables(self.variables)
         return gettext(self.action, **variables)
 
     @staticmethod
@@ -69,13 +71,19 @@ class LogActionMixin(ModelSQL, ModelView):
         return obj.id
 
     @classmethod
-    def log(cls, action, objs, key, **variables):
+    def log(cls, action, objs, key, model_name, **variables):
         user = Transaction().user
         variables_str = LogActionMixin._get_variables_str(variables)
         logs = []
         with Transaction().set_user(0):
             for obj in objs:
-                # TODO validate if objects are all of same class
+                # Ensure all objects are of same type
+                if model_name != obj.__class__.__name__:
+                    raise UserError(
+                        gettext('log_action.objet_not_same_type',
+                            model_1=model_name,
+                            model_2=obj.__class__.__name__,
+                        ))
                 logs.append({
                     'key': key,
                     'resource': cls._get_resource(obj),
@@ -99,8 +107,10 @@ def write_log(action, objs, *args, **variables):
         key = None
     else:
         key, = args
+
+    model_name = objs[0].__class__.__name__
     pool = Pool()
-    model = objs[0].__class__.__name__ + '.log_action'
+    model = model_name + '.log_action'
     try:
         Log = pool.get(model)
     except KeyError:
@@ -113,4 +123,4 @@ def write_log(action, objs, *args, **variables):
             gettext('log_action.log_action_error',
                 error=str(e),
             ))
-    Log.log(action, objs, key, **variables)
+    Log.log(action, objs, key, model_name, **variables)

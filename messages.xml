@@ -5,10 +5,46 @@ the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="ir.message" id="model_not_found">
-            <field name="text">Model '%(model)s' not found for logging.</field>
+            <field name="text">Model "%(model)s" not found for logging.</field>
         </record>
         <record model="ir.message" id="log_action_error">
-            <field name="text">Logging error: '%(error)s'.</field>
+            <field name="text">Logging error: "%(error)s".</field>
+        </record>
+        <record model="ir.message" id="objet_not_same_type">
+            <field name="text">Logging objects error: "%(model_1)s" and "%(model_2)s" are diferent.</field>
+        </record>
+
+        <!-- Commom models used messages -->
+
+        <record model="ir.message" id="msg_draft">
+            <field name="text">Draft</field>
+        </record>
+        <record model="ir.message" id="msg_created">
+            <field name="text">Created</field>
+        </record>
+        <record model="ir.message" id="msg_modified">
+            <field name="text">Modified</field>
+        </record>
+        <record model="ir.message" id="msg_confirmed">
+            <field name="text">Confirmed</field>
+        </record>
+        <record model="ir.message" id="msg_approved">
+            <field name="text">Approved</field>
+        </record>
+        <record model="ir.message" id="msg_cancelled">
+            <field name="text">Cancelled</field>
+        </record>
+        <record model="ir.message" id="msg_posted">
+            <field name="text">Posted</field>
+        </record>
+        <record model="ir.message" id="msg_validated">
+            <field name="text">Validated</field>
+        </record>
+        <record model="ir.message" id="msg_paid">
+            <field name="text">Paid</field>
+        </record>
+        <record model="ir.message" id="msg_assigned">
+            <field name="text">Assigned</field>
         </record>
     </data>
 </tryton>

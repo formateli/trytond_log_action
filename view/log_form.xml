@@ -3,12 +3,12 @@
 The COPYRIGHT file at the top level of this repository contains
 the full copyright notices and license terms. -->
 <form col="6">
-    <label name="date"/>
+    <label string="Date" id="label_date"/>
     <field name="date" widget="date"/>
-    <label name="date" string="Time"/>
+    <label string="Time" id="label_time"/>
     <field name="date" widget="time"/>
-    <label name="user"/>
+    <label string="User" id="label_user"/>
     <field name="user"/>
-    <label name="message"/>
+    <label string="Message" id="label_message"/>
     <field name="message" colspan="5"/>
 </form>
