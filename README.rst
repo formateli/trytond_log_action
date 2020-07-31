@@ -30,15 +30,15 @@ How to use:
     logs = fields.One2Many ('my.model.log_action', 'resource', 'Logs')
 
 4.- Use the **write_log** function wherever you want.
-    If **write_log** finds *my.model.log_action* model then it writes messages using it,
-    otherwise an error is raised.
+If **write_log** finds *my.model.log_action* model then it writes messages using it,
+otherwise an error is raised.
 
-    **write_log** has following parameters:
+**write_log** has following parameters:
 
-        - **action**: The message to log. It can be a model message id for gettext translation.
-        - **obj**: Objects from which logs are written. Must be of same type.
-        - ***args**: Optional key for searching porpuses.
-        - ****variables**: Optional variables used by gettext for translation.
+    - **action**: The message to log. It can be a model message id for gettext translation.
+    - **obj**: Objects from which logs are written. Must be of same type.
+    - ***args**: Optional key for searching porpuses.
+    - ****variables**: Optional variables used by gettext for translation.
 
 5.- **Views:**: You can define your own views for the log model or use the views defined on *log_action* module:
 
