@@ -48,7 +48,7 @@ otherwise an error is raised.
 Example::
 
     # For this to work, tranlatable_message must be defined in ir.message
-    # usually using message.xml for a module.
+    # usually with message.xml for a module.
 
     write_log('test_module.tranlatable_message', [obj1, obj2], the_key, val1='one', val2='two')
 
