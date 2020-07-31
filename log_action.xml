@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
-<!-- This file is part of log_action Tryton module. The COPYRIGHT file at the top level of
-this repository contains the full copyright notices and license terms. -->
+<!-- This file is part of log_action module.
+The COPYRIGHT file at the top level of this repository contains
+the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="ir.ui.view" id="log_view_form">

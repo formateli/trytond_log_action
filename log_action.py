@@ -1,9 +1,11 @@
-#This file is part of log_action Tryton module. The COPYRIGHT file at the top level of
-#this repository contains the full copyright notices and license terms.
+# This file is part of log_action module.
+# The COPYRIGHT file at the top level of this repository contains
+# the full copyright notices and license terms.
 from trytond.pool import Pool
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.transaction import Transaction
 from datetime import datetime
+from trytond.i18n import gettext
 from trytond.exceptions import UserError
 
 __all__ = [
@@ -14,10 +16,12 @@ __all__ = [
 
 
 class LogActionMixin(ModelSQL, ModelView):
-    key = fields.Char('Key', readonly=True)
+    key = fields.Char('Key', readonly=True, select=True)
     action = fields.Char('Action', readonly=True)
     date = fields.DateTime('Date', readonly=True)
     user = fields.Many2One('res.user', 'User', readonly=True)
+    variables = fields.Char('Variables', readonly=True)
+    message = fields.Function(fields.Char('Message'), 'get_message')
 
     @classmethod
     def __setup__(cls):
@@ -36,20 +40,48 @@ class LogActionMixin(ModelSQL, ModelView):
         return Transaction().user
 
     @staticmethod
+    def _get_variables(data):
+        result = {}
+        pairs = data.split(':||:')
+        for pair in pairs:
+            vals = pair.split(':|:')
+            result[vals[0]] = vals[1]
+        return result
+
+    @staticmethod
+    def _get_variables_str(variables):
+        result = ''
+        for key, value in variables.items():
+            if result != '':
+                result += ':||:'
+            result += key + ':|:'
+            result += str(value)
+        if result == '':
+            result = None
+        return result
+
+    def get_message(self):
+        variables = self._get_variables(self.lang_variables)
+        return gettext(self.action, **variables)
+
+    @staticmethod
     def _get_resource(obj):
         return obj.id
 
     @classmethod
-    def log(cls, action, objs, key):
+    def log(cls, action, objs, key, **variables):
         user = Transaction().user
+        variables_str = LogActionMixin._get_variables_str(variables)
         logs = []
         with Transaction().set_user(0):
             for obj in objs:
+                # TODO validate if objects are all of same class
                 logs.append({
                     'key': key,
                     'resource': cls._get_resource(obj),
                     'action': action,
-                    'user': user
+                    'variables': variables_str,
+                    'user': user,
                 })
         if logs:
             cls.create(logs)
@@ -60,9 +92,13 @@ class LogAction(LogActionMixin):
     __name__ = "log_action"
 
 
-def write_log(action, objs, key=None):
+def write_log(action, objs, *args, **variables):
     if not objs or not action:
         return
+    if not args:
+        key = None
+    else:
+        key, = args
     pool = Pool()
     model = objs[0].__class__.__name__ + '.log_action'
     try:
@@ -77,4 +113,4 @@ def write_log(action, objs, key=None):
             gettext('log_action.log_action_error',
                 error=str(e),
             ))
-    Log.log(action, objs, key)
+    Log.log(action, objs, key, **variables)

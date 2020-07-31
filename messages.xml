@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of log_action module.
+The COPYRIGHT file at the top level of this repository contains
+the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.message" id="model_not_found">
+            <field name="text">Model '%(model)s' not found for logging.</field>
+        </record>
+        <record model="ir.message" id="log_action_error">
+            <field name="text">Logging error: '%(error)s'.</field>
+        </record>
+    </data>
+</tryton>
