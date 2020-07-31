@@ -16,11 +16,12 @@ How to use:
     *'.log_action'* appended to the end:
 
 ::
-        class MyLog(LogActionMixin):
-            "My Logs Model"
-            __name__ = "my.model.log_action" 
-            resource = fields.Many2One('my.model',
-                'My Model', ondelete='CASCADE', select=True)
+
+    class MyLog(LogActionMixin):
+        "My Logs Model"
+        __name__ = "my.model.log_action" 
+        resource = fields.Many2One('my.model',
+            'My Model', ondelete='CASCADE', select=True)
 
 3.- Add the logs field (One2Many) to the model you want to log.
 
@@ -33,17 +34,18 @@ How to use:
     otherwise an error is raised.
 
     **write_log** has three parameters:
-        - **action**: The message to log. It can be a key for gettext translation.
-        - **obj**: Objects from which logs are written.
-        - ***args**: key for searching porpuses.
-        - ****variables**: Variables used by gettext for translation.
+        - **action**: The message to log. It can be a model message id for gettext translation.
+        - **obj**: Objects from which logs are written. Must be of same type.
+        - ***args**: Optional key for searching porpuses.
+        - ****variables**: Optional variables used by gettext for translation.
 
 5.- **Views:**: You can define your own views for the log model or use the views defined
     on *log_action* module:
 
-    ::
-        <field name="logs" colspan="4"
-            view_ids="log_action.log_view_tree,log_action.log_view_form"/>
+::
+
+    <field name="logs" colspan="4"
+        view_ids="log_action.log_view_tree,log_action.log_view_form"/>
 
 
 License
