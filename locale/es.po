@@ -20,16 +20,16 @@ msgstr "Mensaje"
 
 msgctxt "model:ir.message,text:model_not_found"
 msgid "Model \"%(model)s\" not found for logging."
-msgstr "El Modelo \"%(model)s\" no fue encontrado para escribir logs."
+msgstr "El Modelo \"%(model)s\" no fue encontrado para escribir registros."
 
 msgctxt "model:ir.message,text:log_action_error"
 msgid "Logging error: \"%(error)s\"."
-msgstr "Error al escribir log: \"%(error)s\"."
+msgstr "Error al escribir registros: \"%(error)s\"."
 
 msgctxt "model:ir.message,text:objet_not_same_type"
 msgid "Logging objects error: \"%(model_1)s\" and \"%(model_2)s\" are diferent."
 msgstr ""
-"Error al escribir logs en objetos: \"%(model_1)s\" y \"%(model_2)s\" son diferentes."
+"Error al escribir registros en objetos: \"%(model_1)s\" y \"%(model_2)s\" son diferentes."
 
 msgctxt "model:ir.message,text:msg_draft"
 msgid "Draft"
