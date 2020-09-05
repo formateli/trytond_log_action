@@ -1,7 +1,7 @@
 Log Action
 ##########
 
-Write logs on Tryton models.
+Write logs on Tryton models actions.
 
 How to use:
 
@@ -38,7 +38,7 @@ otherwise an error is raised.
 
     - **action**: The message to log. It can be a model message id for gettext translation.
     - **obj**: Objects from which logs are written. Must be of same type.
-    - ***args**: Optional key for searching porpuses.
+    - ***key**: Optional key for searching porpuses.
     - ****variables**: Optional variables used by gettext for translation.
 
 ::
