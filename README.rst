@@ -27,7 +27,7 @@ to map the model you want to log, use *__name__* same as the model you want to l
 
 ::
 
-    logs = fields.One2Many ('my.model.log_action', 'resource', 'Logs')
+    logs = fields.One2Many ('my.model.log_action', 'resource', 'Logs', readonly=True)
 
 4.- Use the **write_log** function wherever you want for any object which model has a logs
 field defined.
