@@ -46,5 +46,8 @@ the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_assigned">
             <field name="text">Assigned</field>
         </record>
+        <record model="ir.message" id="msg_deletion_attempt">
+            <field name="text">Deletion attempt</field>
+        </record>
     </data>
 </tryton>
