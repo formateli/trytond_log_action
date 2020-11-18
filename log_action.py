@@ -91,8 +91,9 @@ class LogActionMixin(ModelSQL, ModelView):
                     'variables': variables_str,
                     'user': user,
                 })
-        if logs:
-            cls.create(logs)
+
+            if logs:
+                cls.create(logs)
 
 
 class LogAction(LogActionMixin):

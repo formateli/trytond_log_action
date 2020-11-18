@@ -1,7 +1,7 @@
 Log Action
 ##########
 
-Write logs on Tryton models.
+Write action logs on Tryton models.
 
 How to use:
 
@@ -27,7 +27,7 @@ to map the model you want to log, use *__name__* same as the model you want to l
 
 ::
 
-    logs = fields.One2Many ('my.model.log_action', 'resource', 'Logs')
+    logs = fields.One2Many ('my.model.log_action', 'resource', 'Logs', readonly=True)
 
 4.- Use the **write_log** function wherever you want for any object which model has a logs
 field defined.
@@ -37,8 +37,8 @@ otherwise an error is raised.
 **write_log** has following parameters:
 
     - **action**: The message to log. It can be a model message id for gettext translation.
-    - **obj**: Objects from which logs are written. Must be of same type.
-    - ***args**: Optional key for searching porpuses.
+    - **obj**: Object list for which logs are written. Must be of same type.
+    - ***key**: Optional key for searching porpuses.
     - ****variables**: Optional variables used by gettext for translation.
 
 ::
@@ -50,7 +50,7 @@ Example::
     # For this to work, tranlatable_message must be defined in ir.message
     # usually with message.xml for a module.
 
-    write_log('test_module.tranlatable_message', [obj1, obj2], the_key, val1='one', val2='two')
+    write_log('test_module.tranlatable_message_id', [obj1, obj2], the_key, val1='one', val2='two')
 
 5.- **Views:**: You can define your own views for the log model or use the views defined on *log_action* module:
 
