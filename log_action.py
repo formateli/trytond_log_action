@@ -33,7 +33,7 @@ class LogActionMixin(ModelSQL, ModelView):
 
     @staticmethod
     def default_date():
-        return datetime.now()
+        return datetime.now().replace(microsecond=0)
 
     @staticmethod
     def default_user():
