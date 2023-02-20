@@ -8,15 +8,9 @@ from datetime import datetime
 from trytond.i18n import gettext
 from trytond.exceptions import UserError
 
-__all__ = [
-        'LogActionMixin',
-        'LogAction',
-        'write_log'
-    ]
-
 
 class LogActionMixin(ModelSQL, ModelView):
-    key = fields.Char('Key', readonly=True, select=True)
+    key = fields.Char('Key', readonly=True)
     action = fields.Char('Action', readonly=True)
     date = fields.DateTime('Date', readonly=True)
     user = fields.Many2One('res.user', 'User', readonly=True)
