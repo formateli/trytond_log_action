@@ -65,7 +65,7 @@ class LogActionMixin(ModelSQL, ModelView):
         return obj.id
 
     @classmethod
-    def log(cls, action, objs, key, model_name, **variables):
+    def write_log(cls, action, objs, key, model_name, **variables):
         user = Transaction().user
         variables_str = LogActionMixin._get_variables_str(variables)
         logs = []
@@ -118,4 +118,4 @@ def write_log(action, objs, *args, **variables):
             gettext('log_action.log_action_error',
                 error=str(e),
             ))
-    Log.log(action, objs, key, model_name, **variables)
+    Log.write_loglog(action, objs, key, model_name, **variables)
