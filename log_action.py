@@ -8,15 +8,9 @@ from datetime import datetime
 from trytond.i18n import gettext
 from trytond.exceptions import UserError
 
-__all__ = [
-        'LogActionMixin',
-        'LogAction',
-        'write_log'
-    ]
-
 
 class LogActionMixin(ModelSQL, ModelView):
-    key = fields.Char('Key', readonly=True, select=True)
+    key = fields.Char('Key', readonly=True)
     action = fields.Char('Action', readonly=True)
     date = fields.DateTime('Date', readonly=True)
     user = fields.Many2One('res.user', 'User', readonly=True)
@@ -33,7 +27,7 @@ class LogActionMixin(ModelSQL, ModelView):
 
     @staticmethod
     def default_date():
-        return datetime.now()
+        return datetime.now().replace(microsecond=0)
 
     @staticmethod
     def default_user():
@@ -71,7 +65,7 @@ class LogActionMixin(ModelSQL, ModelView):
         return obj.id
 
     @classmethod
-    def log(cls, action, objs, key, model_name, **variables):
+    def write_log(cls, action, objs, key, model_name, **variables):
         user = Transaction().user
         variables_str = LogActionMixin._get_variables_str(variables)
         logs = []
@@ -124,4 +118,4 @@ def write_log(action, objs, *args, **variables):
             gettext('log_action.log_action_error',
                 error=str(e),
             ))
-    Log.log(action, objs, key, model_name, **variables)
+    Log.write_log(action, objs, key, model_name, **variables)
