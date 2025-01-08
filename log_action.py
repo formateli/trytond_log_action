@@ -58,7 +58,14 @@ class LogActionMixin(ModelSQL, ModelView):
 
     def get_message(self, name=None):
         variables = self._get_variables(self.variables)
-        return gettext(self.action, **variables)
+        msg = ''
+        try:
+            msg = gettext(self.action, **variables)
+        except ValueError:
+            return self.action
+        except KeyError:
+            return self.action
+        return msg
 
     @staticmethod
     def _get_resource(obj):
